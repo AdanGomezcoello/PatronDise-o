@@ -1,0 +1,56 @@
+-------Voting--------------------------------------------------------
+GET /Voting HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Voting Page 
+   Temas: []
+-------ThemeManager--------------------------------------------------
+GET /ThemeManager HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Theme Manager Page 
+   Temas: []
+---
+POST /ThemeManager?themeName=Tema1&action=createTheme HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Theme Manager Page 
+   Temas: [Tema1]
+---
+POST /ThemeManager?themeName=Tema2&action=createTheme HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Theme Manager Page 
+   Temas: [Tema1, Tema2]
+-------Voting--------------------------------------------------------
+POST /Voting?themeName=Tema1&action=voteTheme&value=4 HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Voting Page 
+   Temas: [ThemeTransfer [themeName=Tema1, average=4.0], ThemeTransfer [themeName=Tema2, average=NaN]]
+---
+POST /Voting?themeName=Tema1&action=voteTheme&value=6 HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Voting Page 
+   Temas: [ThemeTransfer [themeName=Tema1, average=5.0], ThemeTransfer [themeName=Tema2, average=NaN]]
+---
+POST /Voting?themeName=Tema1&action=voteTheme&value=5 HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Voting Page 
+   Temas: [ThemeTransfer [themeName=Tema1, average=5.0], ThemeTransfer [themeName=Tema2, average=NaN]]
+---
+POST /Voting?themeName=Tema2&action=voteTheme&value=5 HTTP/1.1
+Host: //LocalHost
+Headers: headerParams={}, cookies={}, body=null
+
+Voting Page 
+   Temas: [ThemeTransfer [themeName=Tema1, average=5.0], ThemeTransfer [themeName=Tema2, average=5.0]]
